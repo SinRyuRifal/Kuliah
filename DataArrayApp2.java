@@ -37,43 +37,10 @@ class DataArray {
         nElemen = 0;
     }
 
-    public Mahasiswa find(long searchNim) {
-        int i;
-        for (i = 0; i < nElemen; i++) {
-            if (mhs[i].getNim() == searchNim) {
-                break;
-            }
-        }
-        if (i == nElemen) {
-            return null;
-        } else {
-            return mhs[i];
-        }
-    }
-
     public void insert(long nim, String nama, String asal) {
         mhs[nElemen] = new Mahasiswa(nim, nama, asal);
         nElemen++;
     }
-
-    public boolean delete(long searchNim) {
-        int i;
-        for (i = 0; i < nElemen; i++) {
-            if (mhs[i].getNim() == searchNim) {
-                break;
-            }
-        }
-        if (i == nElemen) {
-            return false;
-        } else {
-            for (int j = i; j < nElemen; j++) {
-                mhs[j] = mhs[j + 1];
-            }
-            nElemen--;
-            return true;
-        }
-    }
-
     public void displayArray() {
         for (int i = 0; i < nElemen; i++) {
             mhs[i].displayMhs();
@@ -81,7 +48,7 @@ class DataArray {
     }
 }
 
-public class DataArrayApp {
+public class DataArrayApp2 {
 
     public static void main(String[] args) {
         int maxSize = 100;
@@ -98,18 +65,6 @@ public class DataArrayApp {
         arr.insert(16650280, "Arina", "Malang");
 
         arr.displayArray();
-        long searchKey = 16650270;
-        Mahasiswa mhs = arr.find(searchKey);
-        if (mhs != null) {
-            System.out.print("\nketemu");
-            mhs.displayMhs();
-        } else {
-            System.out.print("ga ketemu" + searchKey);
-        }
-        searchKey = 16650240;
-        System.out.print("\nhapus nim: " + searchKey);
-        arr.delete(searchKey);
-
-        arr.displayArray();
+      
     }
 }
